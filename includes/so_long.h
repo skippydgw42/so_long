@@ -68,6 +68,7 @@ void		game_init(t_data *data, int fd);
 //imgs setup//
 void		setup_tiles(t_tiles *tiles, void *mlx);
 void		put_imgs(t_tiles *tiles, t_vars *vars, char **map);
+void		ft_free(char **str);
 
 //============PARAMS===========//
 int			ft_close(int keycode, t_vars *vars);
@@ -75,7 +76,7 @@ int			ft_close(int keycode, t_vars *vars);
 //===========PARSING===========//
 int			map_check(char **map);
 char		**map_to_split(int fd);
-char		**map_init(int fd);
+void		map_init(t_data *data, int fd);
 void		check_err(t_data *data);
 int			is_map_closed(char **map);
 int			is_rect_map(char **map);
@@ -84,12 +85,12 @@ int			is_rect_map(char **map);
 char		*get_next_line(int fd);
 
 //=============PNG LINK=========//
-# define WALL "../imgs/wall/forest.xpm"
-# define TREE "../imgs/wall/tree.xpm"
-# define EMPTY "../imgs/ground/grass9.xpm"
-# define PLAYER "../imgs/player/girl_front.xpm"
-# define COLLEC "../imgs/collect/white_rabbit.xpm"
-# define END_CLOSE "../imgs/exit/rabbit_hole_close.xpm"
-# define END_OPEN "../imgs/exit/tabbit_hole_open.xpm"
+# define WALL "/Users/skippy/42_cursus/projects/so_long/imgs/wall/forest.xpm"
+# define TREE "/Users/skippy/42_cursus/projects/so_long/imgs/wall/tree.xpm"
+# define EMPTY "/Users/skippy/42_cursus/projects/so_long/imgs/ground/grass9.xpm"
+# define PLAYER "/Users/skippy/42_cursus/projects/so_long/imgs/player/girl_front.xpm"
+# define COLLEC "/Users/skippy/42_cursus/projects/so_long/imgs/collect/white_rabbit.xpm"
+# define END_CLOSE "/Users/skippy/42_cursus/projects/so_long/imgs/exit/rabbit_hole_close.xpm"
+# define END_OPEN "/Users/skippy/42_cursus/projects/so_long/imgs/exit/tabbit_hole_open.xpm"
 
 #endif

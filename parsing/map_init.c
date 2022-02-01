@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-char	**map_init(int fd)
+void	map_init(t_data *data, int fd)
 {
 	char	*str;
 	char	*to_free;
@@ -29,5 +29,6 @@ char	**map_init(int fd)
 			free(buffer);
 		buffer = get_next_line(fd);
 	}
-	return (ft_split(str, '\n'));
+	data->map = ft_split(str, '\n');
+	free(str);
 }

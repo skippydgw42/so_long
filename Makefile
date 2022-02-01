@@ -13,6 +13,7 @@ GNL =	./gnl/get_next_line.c		\
 
 ADD =	./add/setup_tiles.c			\
 		./add/put_imgs.c			\
+		./add/ft_free.c				\
 
 PARSING =	./parsing/map_check.c	\
 			./parsing/check_err.c	\

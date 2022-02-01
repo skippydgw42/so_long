@@ -15,11 +15,10 @@
 void	struct_init(t_data *data)
 {
 	//=======!!!!!!!!FREE!!!!!!!!=========//
-	data = malloc(sizeof(data));
-	data->items = malloc(sizeof(t_items));
-	data->vars = malloc(sizeof(t_vars));
-	data->tiles = malloc(sizeof(t_tiles));
-	data->player = malloc(sizeof(t_player));
+	data->items = malloc(sizeof(t_items) + 1);
+	data->vars = malloc(sizeof(t_vars) + 1);
+	data->tiles = malloc(sizeof(t_tiles) + 1);
+	data->player = malloc(sizeof(t_player) + 1);
 }
 
 int	main(void)
@@ -27,8 +26,8 @@ int	main(void)
 	t_data	*data;
 	int		fd;
 	
-	data = NULL;
-	fd = open("/Users/mdegraeu/github/projects/so_long/map.ber", O_RDONLY);
+	data = malloc(sizeof(*data) + 1);
+	fd = open("/Users/skippy/42_cursus/projects/so_long/map/map.ber", O_RDONLY);
 	struct_init(data);
 	//=======!!free map!!==========//
 	game_init(data, fd);

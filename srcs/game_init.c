@@ -14,7 +14,7 @@
 
 void	game_init(t_data *data, int fd)
 {	
-	data->map = map_init(fd);
+	map_init(data, fd);
 	check_err(data);
 	player_init(data->player, data->map);
 }

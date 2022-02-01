@@ -24,10 +24,7 @@ void	put_imgs(t_tiles *tiles, t_vars *vars, char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] == '1')
-			{
 				mlx_put_image_to_window(vars->mlx, vars->win, tiles->wall, x * 16, y * 16);
-				write(1, "ICI\n", 4);
-			}
 			else if (map[y][x] == '0')
 				mlx_put_image_to_window(vars->mlx, vars->win, tiles->empty, x * 16, y * 16);
 			else if (map[y][x] == 'C')
