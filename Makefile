@@ -2,13 +2,17 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Imlx
+CFLAGS = -Wall -Wextra -Werror ##-Imlx
+
 
 FLAGSX = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 HEADER = ./includes/so_long.h		\
 
 GNL =	./gnl/get_next_line.c		\
+
+ADD =	./add/setup_tiles.c			\
+		./add/put_imgs.c			\
 
 PARSING =	./parsing/map_check.c	\
 			./parsing/check_err.c	\
@@ -22,7 +26,8 @@ SRCS =	./srcs/main.c				\
 		./srcs/game_init.c			\
 		${GNL}						\
 		${PARSING}					\
-		${PARAMS}
+		${PARAMS}					\
+		${ADD}
 
 OBJS = ${SRCS:.c=.o}
 
@@ -38,7 +43,7 @@ library :
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME} : ${OBJS} ${LIB}
-	${CC} ${OBJS} ${LIB} ${FLAGSX} -o ${NAME}
+	${CC} ${FLAGSX} ${OBJS} ${LIB} -o ${NAME}
 
 clean :
 	make -C ./mlx clean

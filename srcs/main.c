@@ -6,50 +6,42 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:28:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/31 16:46:24 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:39:53 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	struct_init(t_data *data)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	//=======!!!!!!!!FREE!!!!!!!!=========//
+	data = malloc(sizeof(data));
+	data->items = malloc(sizeof(t_items));
+	data->vars = malloc(sizeof(t_vars));
+	data->tiles = malloc(sizeof(t_tiles));
+	data->player = malloc(sizeof(t_player));
 }
 
 int	main(void)
 {
-	t_vars	vars;
-	t_game	game;
-	t_data	img;
+	t_data	*data;
 	int		fd;
-	int		x;
-	int		y;
-	//int		keycode = 27;
 	
+	data = NULL;
 	fd = open("/Users/mdegraeu/github/projects/so_long/map.ber", O_RDONLY);
-	//=======free map!!==========//
-	game = game_init(fd);
-	if (game.items.valid == 0)
+	struct_init(data);
+	//=======!!free map!!==========//
+	game_init(data, fd);
+	if (data->items->valid == 0)
 	{
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "petit jeu");
-	mlx_loop(vars.mlx);
-	//ft_close(keycode, &vars);
-
-	//img.img = mlx_new_image(vars.mlx, 1920, 1080);
-	//img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	
-	img.tiles->empty = mlx_xpm_file_to_image(vars.mlx, EMPTY, &x, &y);
-	img.tiles->wall = mlx_xpm_file_to_image(vars.mlx, WALL, &x, &y);
-
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	data->vars->mlx = mlx_init();
+	data->vars->win = mlx_new_window(data->vars->mlx, 1920, 1080, "Alice in wonderland");
+	setup_tiles(data->tiles, data->vars->mlx);
+	put_imgs(data->tiles, data->vars, data->map);
+	mlx_loop(data->vars->mlx);
 
 	return (0);
 }

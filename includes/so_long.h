@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:29:11 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/27 14:58:35 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:39:01 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,15 @@ typedef struct s_vars
 
 typedef struct s_tiles
 {
+	void	*img;
 	void	*empty;
 	void	*wall;
 	void	*player;
-	void	*collective;
+	void	*collec;
 	void	*end;
+	int		x[1];
+	int		y[1];
 }	t_tiles;
-
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	t_tiles	*tiles;
-}	t_data;
 
 typedef	struct s_items
 {
@@ -58,17 +51,23 @@ typedef	struct s_player
 	int	y;
 }	t_player;
 
-typedef struct s_game
+typedef struct s_data
 {
 	char		**map;
-	t_items		items;
-	t_player	player;
-}	t_game;
+	t_vars		*vars;
+	t_tiles		*tiles;
+	t_items		*items;
+	t_player	*player;
+}	t_data;
 
 //============SRCS=============//
-t_player	player_init(t_player player, char **map);
-t_game		game_init(int fd);
-//void		game_init(t_game game, int fd);
+void		player_init(t_player *player, char **map);
+void		game_init(t_data *data, int fd);
+
+//============ADD=======//
+//imgs setup//
+void		setup_tiles(t_tiles *tiles, void *mlx);
+void		put_imgs(t_tiles *tiles, t_vars *vars, char **map);
 
 //============PARAMS===========//
 int			ft_close(int keycode, t_vars *vars);
@@ -77,17 +76,20 @@ int			ft_close(int keycode, t_vars *vars);
 int			map_check(char **map);
 char		**map_to_split(int fd);
 char		**map_init(int fd);
-t_items		check_err(char **map);
+void		check_err(t_data *data);
 int			is_map_closed(char **map);
 int			is_rect_map(char **map);
 
 //=============GNL=============//
 char		*get_next_line(int fd);
 
-# define WALL "../imgs/box_wall.png"
-# define EMPTY "../imgs/ground.png"
-# define PLAYER
-# define START
-# define END
+//=============PNG LINK=========//
+# define WALL "../imgs/wall/forest.xpm"
+# define TREE "../imgs/wall/tree.xpm"
+# define EMPTY "../imgs/ground/grass9.xpm"
+# define PLAYER "../imgs/player/girl_front.xpm"
+# define COLLEC "../imgs/collect/white_rabbit.xpm"
+# define END_CLOSE "../imgs/exit/rabbit_hole_close.xpm"
+# define END_OPEN "../imgs/exit/tabbit_hole_open.xpm"
 
 #endif

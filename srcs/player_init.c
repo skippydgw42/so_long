@@ -6,13 +6,13 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:41:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/31 16:44:24 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:31:10 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_player	player_init(t_player player, char **map)
+void	player_init(t_player *player, char **map)
 {
 	int	i;
 	int	j;
@@ -25,13 +25,12 @@ t_player	player_init(t_player player, char **map)
 		{
 			if (map[i][j] == 'P')
 			{
-				player.x = j;
-				player.y = i;
-				return (player);
+				player->x = j;
+				player->y = i;
+				break ;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (player);
 }
