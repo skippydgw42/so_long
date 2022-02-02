@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:01:07 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/31 16:59:54 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:11:57 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ char	*get_next_line(int fd)
 		if (to_free)
 			free(to_free);
 		if (ft_strchr(str, '\n'))
-		{
 			return (ft_read_last_line(&str));
-		}
 		ret = read(fd, buffer, BUFFER_SIZE);
 	}
 	return (ft_read_last_line(&str));

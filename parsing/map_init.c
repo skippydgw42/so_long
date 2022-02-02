@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:01 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/31 16:47:18 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:31:00 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	map_init(t_data *data, int fd)
 	char	*to_free;
 	char	*buffer;
 
+	str = NULL;
 	buffer = get_next_line(fd);
 	while (buffer)
 	{

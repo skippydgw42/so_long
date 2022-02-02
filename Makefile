@@ -11,24 +11,27 @@ HEADER = ./includes/so_long.h		\
 
 GNL =	./gnl/get_next_line.c		\
 
-ADD =	./add/setup_tiles.c			\
-		./add/put_imgs.c			\
-		./add/ft_free.c				\
+ADD =	./add/ft_free.c				\
+		./add/ft_modlen.c			\
+
+INIT = 	./init/setup_tiles.c		\
+		./init/put_imgs.c			\
+		./init/map_init.c			\
+		./init/game_init.c			\
+		./init/player_init.c		\
 
 PARSING =	./parsing/map_check.c	\
 			./parsing/check_err.c	\
-			./parsing/map_init.c	\
 
 PARAMS =	./params/close.c		\
 			./params/move.c			\
 
 SRCS =	./srcs/main.c				\
-		./srcs/player_init.c		\
-		./srcs/game_init.c			\
 		${GNL}						\
 		${PARSING}					\
 		${PARAMS}					\
-		${ADD}
+		${ADD}						\
+		${INIT}						\
 
 OBJS = ${SRCS:.c=.o}
 
