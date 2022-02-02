@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:29:11 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/02 13:41:31 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:32:40 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ typedef struct s_data
 	t_tiles		*tiles;
 	t_items		*items;
 	t_player	*player;
+	int			e_x;
+	int			e_y;
 }	t_data;
 
 //============SRCS=============//
-void		player_init(t_player *player, char **map);
+void		player_init(t_data *data, char **map);
 void		game_init(t_data *data, int fd);
 
 //============ADD=======//
@@ -72,7 +74,12 @@ void		ft_free(char **str);
 size_t		ft_modlen(char **map);
 
 //============PARAMS===========//
-int			ft_close(int keycode, t_vars *vars);
+int			ft_key(int keycode, t_data *data);
+// int			ft_close(int keycode, t_vars *vars);
+void		move_up(t_data *data);
+void		move_down(t_data *data);
+void		move_right(t_data *data);
+void		move_left(t_data *data);
 
 //===========PARSING===========//
 int			map_check(char **map);
@@ -92,6 +99,6 @@ char		*get_next_line(int fd);
 # define PLAYER "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_front.xpm"
 # define COLLEC "/Users/mdegraeu/github/projects/so_long/imgs/collect/white_rabbit.xpm"
 # define END_CLOSE "/Users/mdegraeu/github/projects/so_long/imgs/exit/rabbit_hole_close.xpm"
-# define END_OPEN "/Users/mdegraeu/github/projects/so_long/imgs/exit/tabbit_hole_open.xpm"
+# define END_OPEN "/Users/mdegraeu/github/projects/so_long/imgs/exit/rabbit_hole_open.xpm"
 
 #endif

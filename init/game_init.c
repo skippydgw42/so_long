@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_init.c                                      :+:      :+:    :+:   */
+/*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 16:41:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/01 16:31:10 by mdegraeu         ###   ########.fr       */
+/*   Created: 2022/01/27 13:19:12 by mdegraeu          #+#    #+#             */
+/*   Updated: 2022/02/02 15:55:42 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	player_init(t_player *player, char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'P')
-			{
-				player->x = j;
-				player->y = i;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
+void	game_init(t_data *data, int fd)
+{	
+	map_init(data, fd);
+	check_err(data);
+	player_init(data, data->map);
 }

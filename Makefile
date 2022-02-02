@@ -25,6 +25,7 @@ PARSING =	./parsing/map_check.c	\
 
 PARAMS =	./params/close.c		\
 			./params/move.c			\
+			./params/keynput.c		\
 
 SRCS =	./srcs/main.c				\
 		${GNL}						\

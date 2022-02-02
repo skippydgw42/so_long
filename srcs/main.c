@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:28:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/02 13:42:27 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:30:42 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ int	main(void)
 		write(1, "Error\n", 6);
 		return (0);
 	}
+	printf("x:%d y:%d\n", data->player->x, data->player->y);
 	data->vars->mlx = mlx_init();
 	data->vars->win = mlx_new_window(data->vars->mlx, ft_strlen(data->map[0]) * 16, ft_modlen(data->map) * 16, "Alice in wonderland");
 	setup_tiles(data->tiles, data->vars->mlx);
 	put_imgs(data->tiles, data->vars, data->map);
+	mlx_hook(data->vars->win, 2, 0, ft_key, data);
 	mlx_loop(data->vars->mlx);
 
 	return (0);
