@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:32:12 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/02 16:36:44 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:34:40 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,30 @@ int	collec_ct(t_data *data, t_tiles *tiles, t_vars *vars)
 		tiles->end = mlx_xpm_file_to_image(vars->mlx, END_OPEN, tiles->x, tiles->y);
 	}
 	return (is_fin);
+}
+
+void	ft_step(t_data *data)
+{
+	if (data->side == 0)
+	{
+		data->last_step = data->side;
+		data->side++;
+	}
+	else if (data->side == 2)
+	{
+		data->last_step = data->side;
+		data->side--;
+	}
+	else if (data->last_step == 0)
+	{
+		data->last_step = data->side;
+		data->side++;
+	}
+	else if (data->side == 1 && data->last_step == 2)
+	{
+		data->last_step = data->side;
+		data->side--;
+	}
 }
 
 int	ft_key(int keycode, t_data *data)
