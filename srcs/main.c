@@ -6,24 +6,11 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:28:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 15:23:05 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:11:35 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	struct_init(t_data *data)
-{
-	//=======!!!!!!!!FREE!!!!!!!!=========//
-	data->items = malloc(sizeof(t_items) + 1);
-	data->vars = malloc(sizeof(t_vars) + 1);
-	data->tiles = malloc(sizeof(t_tiles) + 1);
-	data->player = malloc(sizeof(t_player) + 1);
-	//=======!secure malloc à remonter!===//
-	if (!data->items || ! data->vars || !data->tiles || !data->player)
-		return (0);
-	return (1);
-}
 
 int	main(void)
 {
@@ -46,6 +33,5 @@ int	main(void)
 	put_imgs(data->tiles, data->vars, data->map);
 	mlx_hook(data->vars->win, 2, 0, ft_key, data);
 	mlx_loop(data->vars->mlx);
-
 	return (0);
 }

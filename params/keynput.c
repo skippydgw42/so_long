@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:32:12 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 14:34:40 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:09:12 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_step(t_data *data)
 int	ft_key(int keycode, t_data *data)
 {
 	// printf("key :%d\n", keycode);
+	end_game(data);
 	if (keycode == 13)
 		move_up(data);
 	if (keycode == 0)
@@ -61,8 +62,6 @@ int	ft_key(int keycode, t_data *data)
 	if (keycode == 2)
 		move_right(data);
 	collec_ct(data, data->tiles, data->vars);
-	// printf("x:%d y:%d\n", data->player->x, data->player->y);
-	// printf("collec :%d\n\n", data->items->collec);
 	put_imgs(data->tiles, data->vars, data->map);
 	return (1);
 }

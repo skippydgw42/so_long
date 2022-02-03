@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_init.c                                      :+:      :+:    :+:   */
+/*   end_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 16:41:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 16:01:39 by mdegraeu         ###   ########.fr       */
+/*   Created: 2022/02/03 16:06:41 by mdegraeu          #+#    #+#             */
+/*   Updated: 2022/02/03 16:10:08 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	player_init(t_data *data, char **map)
+void	end_game(t_data *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
+	if (data->items->collec == 0)
+		if (data->player->x == data->e_x && data->player->y == data->e_y)
 		{
-			if (map[i][j] == 'E')
-			{
-				data->e_x = j;
-				data->e_y = i;
-			}
-			else if (map[i][j] == 'P')
-			{
-				data->player->x = j;
-				data->player->y = i;
-			}
-			j++;
+			mlx_destroy_window(data->vars->mlx, data->vars->win);
+			printf("\nYou're in le trou Alice! Enjoy it <3\n\n");
+			exit(EXIT_SUCCESS);
 		}
-		i++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:29:11 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 15:33:50 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:08:11 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,15 @@ typedef struct s_data
 	int			last_step;
 }	t_data;
 
-//============SRCS=============//
-void		player_init(t_data *data, char **map);
+//============INIT=============//
+int			struct_init(t_data *data);
 void		game_init(t_data *data, int fd);
-
-//============ADD=======//
-//imgs setup//
+void		player_init(t_data *data, char **map);
+void		map_init(t_data *data, int fd);
 void		setup_tiles(t_tiles *tiles, void *mlx);
 void		put_imgs(t_tiles *tiles, t_vars *vars, char **map);
+
+//============ADD=======//
 void		ft_free(char **str);
 size_t		ft_modlen(char **map);
 
@@ -87,11 +88,10 @@ void		dir_up(void *mlx, t_tiles *tiles, int side);
 void		dir_down(void *mlx, t_tiles *tiles, int side);
 void		dir_right(void *mlx, t_tiles *tiles, int side);
 void		dir_left(void *mlx, t_tiles *tiles, int side);
+void		end_game(t_data *data);
 
 //===========PARSING===========//
 int			map_check(char **map);
-char		**map_to_split(int fd);
-void		map_init(t_data *data, int fd);
 void		check_err(t_data *data);
 int			is_map_closed(char **map);
 int			is_rect_map(char **map);
@@ -99,7 +99,7 @@ int			is_rect_map(char **map);
 //=============GNL=============//
 char		*get_next_line(int fd);
 
-//=============PNG LINK=========//
+//=============XPM LINK=========//
 # define WALL "/Users/mdegraeu/github/projects/so_long/imgs/wall/forest.xpm"
 # define TREE "/Users/mdegraeu/github/projects/so_long/imgs/wall/tree.xpm"
 # define EMPTY "/Users/mdegraeu/github/projects/so_long/imgs/ground/grass8.xpm"
