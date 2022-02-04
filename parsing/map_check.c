@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:19:23 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/02 13:10:50 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:16:17 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	is_map_closed(char **map)
 
 int	valid_char(char c)
 {
-	if (c != '0' && c != '1' && c != 'C' && c != 'P' && c != 'E')
+	if (c != '0' && c != '1' && c != 'C' && c != 'P' && c != 'E' && c != 'X')
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:28:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 16:11:35 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:19:12 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	int		fd;
 	
 	data = malloc(sizeof(*data) + 1);
-	fd = open("./map/map1.ber", O_RDONLY);
+	fd = open("./map/map2.ber", O_RDONLY);
 	struct_init(data);
 	//=======!!free map!!==========//
 	game_init(data, fd);

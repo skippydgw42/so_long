@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:29:11 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 16:08:11 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:15:37 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_tiles
 	void	*player;
 	void	*collec;
 	void	*end;
+	void	*ennemies;
 	int		x[1];
 	int		y[1];
 }	t_tiles;
@@ -42,6 +43,7 @@ typedef	struct s_items
 	int	collec;
 	int	exit;
 	int	player;
+	int	ennemies;
 	int	valid;
 }	t_items;
 
@@ -100,23 +102,35 @@ int			is_rect_map(char **map);
 char		*get_next_line(int fd);
 
 //=============XPM LINK=========//
-# define WALL "/Users/mdegraeu/github/projects/so_long/imgs/wall/forest.xpm"
-# define TREE "/Users/mdegraeu/github/projects/so_long/imgs/wall/tree.xpm"
-# define EMPTY "/Users/mdegraeu/github/projects/so_long/imgs/ground/grass8.xpm"
-# define P_FRONT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_front.xpm"
-# define P_F_RIGHT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_front_rightfeet.xpm"
-# define P_F_LEFT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_front_leftfeet.xpm"
-# define P_BACK "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_back.xpm"
-# define P_B_RIGHT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_back_rightfeet.xpm"
-# define P_B_LEFT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_back_leftfeet.xpm"
-# define P_SIDE "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_side.xpm"
-# define P_S_RIGHT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_side_rightfeet.xpm"
-# define P_S_LEFT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_side_leftfeet.xpm"
-# define P_LSIDE "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_leftside.xpm"
-# define P_LS_RIGHT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_leftside_rightfeet.xpm"
-# define P_LS_LEFT "/Users/mdegraeu/github/projects/so_long/imgs/player/girl_leftside_leftfeet.xpm"
-# define COLLEC "/Users/mdegraeu/github/projects/so_long/imgs/collect/white_rabbit.xpm"
-# define END_CLOSE "/Users/mdegraeu/github/projects/so_long/imgs/exit/rabbit_hole_close.xpm"
-# define END_OPEN "/Users/mdegraeu/github/projects/so_long/imgs/exit/rabbit_hole_open.xpm"
+# define WALL "./imgs/wall/forest.xpm"
+# define TREE "./imgs/wall/tree.xpm"
+# define EMPTY "./imgs/ground/grass8.xpm"
+# define P_FRONT "./imgs/player/girl_front.xpm"
+# define P_F_RIGHT "./imgs/player/girl_front_rightfeet.xpm"
+# define P_F_LEFT "./imgs/player/girl_front_leftfeet.xpm"
+# define P_BACK "./imgs/player/girl_back.xpm"
+# define P_B_RIGHT "./imgs/player/girl_back_rightfeet.xpm"
+# define P_B_LEFT "./imgs/player/girl_back_leftfeet.xpm"
+# define P_SIDE "./imgs/player/girl_side.xpm"
+# define P_S_RIGHT "./imgs/player/girl_side_rightfeet.xpm"
+# define P_S_LEFT "./imgs/player/girl_side_leftfeet.xpm"
+# define P_LSIDE "./imgs/player/girl_leftside.xpm"
+# define P_LS_RIGHT "./imgs/player/girl_leftside_rightfeet.xpm"
+# define P_LS_LEFT "./imgs/player/girl_leftside_leftfeet.xpm"
+# define COLLEC "./imgs/collect/white_rabbit.xpm"
+# define END_CLOSE "./imgs/exit/rabbit_hole_close.xpm"
+# define END_OPEN "./imgs/exit/rabbit_hole_open.xpm"
+# define SPADE_LS "./imgs/ennemies/spade_card.xpm"
+# define SPADE_LS_RF "./imgs/ennemies/spade_rightfeet.xpm"
+# define SPADE_LS_LF "./imgs/ennemies/spade_leftfeet.xpm"
+# define SPADE_RS "./imgs/ennemies/spade_os_card.xpm"
+# define SPADE_RS_RF "./imgs/ennemies/spade_os_rightfeet.xpm"
+# define SPADE_RS_LF "./imgs/ennemies/spade_os_leftfeet.xpm"
+# define HEART_LS "./imgs/ennemies/heart_card.xpm"
+# define HEART_LS_RF "./imgs/ennemies/heart_rightfeet.xpm"
+# define HEART_LS_LF "./imgs/ennemies/heart_leftfeet.xpm"
+# define HEART_RS "./imgs/ennemies/heart_os_card.xpm"
+# define HEART_RS_RF "./imgs/ennemies/heart_os_rightfeet.xpm"
+# define HEART_RS_LF "./imgs/ennemies/heart_os_leftfeet.xpm"
 
 #endif

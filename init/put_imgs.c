@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:13:15 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 13:39:51 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:18:37 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	put_imgs(t_tiles *tiles, t_vars *vars, char **map)
 				mlx_put_image_to_window(vars->mlx, vars->win, tiles->player, x * 64, y * 64);
 			else if (map[y][x] == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->win, tiles->end, x * 64, y * 64);
+			else if (map[y][x] == 'X')
+				mlx_put_image_to_window(vars->mlx, vars->win, tiles->ennemies, x * 64, y * 64);
 			x++;
 		}
 		y++;

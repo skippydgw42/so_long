@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:08:11 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/01 16:28:41 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:15:22 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	check_items(char **map, t_items *items)
 				items->exit += 1;
 			if (map[i][j] == 'C')
 				items->collec += 1;
+			if (map[i][j] == 'X')
+				items->ennemies += 1;
 			j++;
 		}
 		i++;
