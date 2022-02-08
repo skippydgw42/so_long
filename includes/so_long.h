@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:29:11 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/04 15:15:37 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:45:11 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,15 @@ typedef	struct s_player
 	int	y;
 }	t_player;
 
+typedef struct s_card
+{
+	int	x;
+	int	y;
+	int	dir;
+	int	step;
+	int	last_step;
+}	t_card;
+
 typedef struct s_data
 {
 	char		**map;
@@ -60,37 +69,46 @@ typedef struct s_data
 	t_tiles		*tiles;
 	t_items		*items;
 	t_player	*player;
+	t_card		*card;
 	int			e_x;
 	int			e_y;
-	int			side;
+	int			step;
 	int			last_step;
+	int			loop;
 }	t_data;
 
 //============INIT=============//
 int			struct_init(t_data *data);
 void		game_init(t_data *data, int fd);
 void		player_init(t_data *data, char **map);
+void		ennemies_init(t_data *data, char **map);
 void		map_init(t_data *data, int fd);
 void		setup_tiles(t_tiles *tiles, void *mlx);
 void		put_imgs(t_tiles *tiles, t_vars *vars, char **map);
 
 //============ADD=======//
-void		ft_free(char **str);
+void		ft_free(t_data *data);
 size_t		ft_modlen(char **map);
 
 //============PARAMS===========//
 int			ft_key(int keycode, t_data *data);
-// int			ft_close(int keycode, t_vars *vars);
 void		move_up(t_data *data);
 void		move_down(t_data *data);
 void		move_right(t_data *data);
 void		move_left(t_data *data);
 void		ft_step(t_data *data);
-void		dir_up(void *mlx, t_tiles *tiles, int side);
-void		dir_down(void *mlx, t_tiles *tiles, int side);
-void		dir_right(void *mlx, t_tiles *tiles, int side);
-void		dir_left(void *mlx, t_tiles *tiles, int side);
+void		dir_up(void *mlx, t_tiles *tiles, int step);
+void		dir_down(void *mlx, t_tiles *tiles, int step);
+void		dir_right(void *mlx, t_tiles *tiles, int step);
+void		dir_left(void *mlx, t_tiles *tiles, int step);
 void		end_game(t_data *data);
+int			render_frame(t_data *data);
+void		update_enn(t_data *data, t_card *card, char **map);
+void		step_enn(t_data *data);
+void		enn_dir_left(void *mlx, t_tiles *tiles, int step);
+void		enn_dir_right(void *mlx, t_tiles *tiles, int step);
+void		anime_rabbit(t_vars *vars, t_tiles *tiles);
+
 
 //===========PARSING===========//
 int			map_check(char **map);
@@ -117,7 +135,9 @@ char		*get_next_line(int fd);
 # define P_LSIDE "./imgs/player/girl_leftside.xpm"
 # define P_LS_RIGHT "./imgs/player/girl_leftside_rightfeet.xpm"
 # define P_LS_LEFT "./imgs/player/girl_leftside_leftfeet.xpm"
-# define COLLEC "./imgs/collect/white_rabbit.xpm"
+# define RABBIT_D "./imgs/collect/white_rabbit.xpm"
+# define RABBIT_M "./imgs/collect/white_rabbit2.xpm"
+# define RABBIT_U "./imgs/collect/white_rabbit3.xpm"
 # define END_CLOSE "./imgs/exit/rabbit_hole_close.xpm"
 # define END_OPEN "./imgs/exit/rabbit_hole_open.xpm"
 # define SPADE_LS "./imgs/ennemies/spade_card.xpm"

@@ -1,14 +1,20 @@
 #include "../includes/so_long.h"
 
-void    ft_free(char **str)
+void    ft_free(t_data *data)
 {
     int i;
 
     i = 0;
-    while (str[i])
+    while (data->map[i])
     {
-        free(str[i]);
+        free(data->map[i]);
         i++;
     }
-    free(str);
+    free(data->map);
+    free(data->items);
+    free(data->vars);
+    free(data->tiles);
+    free(data->player);
+    free(data->card);
+    free(data);
 }

@@ -28,6 +28,9 @@ PARAMS =	./params/close.c		\
 			./params/keynput.c		\
 			./params/player_moves.c	\
 			./params/end_game.c		\
+			./params/render.c		\
+			./params/ennemies.c		\
+			./params/rabbit.c		\
 
 SRCS =	./srcs/main.c				\
 		${GNL}						\

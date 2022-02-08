@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:32:12 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/03 16:09:12 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:11:06 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,31 @@ int	collec_ct(t_data *data, t_tiles *tiles, t_vars *vars)
 
 void	ft_step(t_data *data)
 {
-	if (data->side == 0)
+	if (data->step == 0)
 	{
-		data->last_step = data->side;
-		data->side++;
+		data->last_step = data->step;
+		data->step++;
 	}
-	else if (data->side == 2)
+	else if (data->step == 2)
 	{
-		data->last_step = data->side;
-		data->side--;
+		data->last_step = data->step;
+		data->step--;
 	}
 	else if (data->last_step == 0)
 	{
-		data->last_step = data->side;
-		data->side++;
+		data->last_step = data->step;
+		data->step++;
 	}
-	else if (data->side == 1 && data->last_step == 2)
+	else if (data->step == 1 && data->last_step == 2)
 	{
-		data->last_step = data->side;
-		data->side--;
+		data->last_step = data->step;
+		data->step--;
 	}
 }
 
 int	ft_key(int keycode, t_data *data)
 {
 	// printf("key :%d\n", keycode);
-	end_game(data);
 	if (keycode == 13)
 		move_up(data);
 	if (keycode == 0)
@@ -61,6 +60,7 @@ int	ft_key(int keycode, t_data *data)
 		move_down(data);
 	if (keycode == 2)
 		move_right(data);
+	end_game(data);
 	collec_ct(data, data->tiles, data->vars);
 	put_imgs(data->tiles, data->vars, data->map);
 	return (1);

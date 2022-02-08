@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   end_game.c                                         :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:06:41 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/02/08 14:15:42 by mdegraeu         ###   ########.fr       */
+/*   Created: 2022/02/08 13:16:14 by mdegraeu          #+#    #+#             */
+/*   Updated: 2022/02/08 16:45:32 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	end_game(t_data *data)
+int	render_frame(t_data *data)
 {
-	if (data->items->collec == 0)
-		if (data->player->x == data->e_x && data->player->y == data->e_y)
-		{
-			mlx_destroy_window(data->vars->mlx, data->vars->win);
-			ft_free(data);
-			printf("\nYou're in le trou Alice! Enjoy it <3\n\n");
-			exit(EXIT_SUCCESS);
-		}
+	if (data->loop == 3000)
+	{
+		step_enn(data);
+		update_enn(data, data->card, data->map);
+		anime_rabbit(data->vars, data->tiles);
+		put_imgs(data->tiles, data->vars, data->map);
+		data->loop = 0;
+	}
+	else
+		data->loop++;
+	return (1);
 }
